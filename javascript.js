@@ -260,7 +260,263 @@ for (let i = 1 ; i <= 100 ; i++) {
 
 
 /* ------------------------------------------------- 
+    Palindrome Checker
+*/
+function palindrome(str) {
+  var out = true;
+  let reg1 = /[A-Za-z0-9]/g;
+  str = str.toLowerCase().match(reg1);  
+
+  for (let i = 0 ; i < str.length ; i++) {
+    if (str[i] != str[(str.length - (i+1))]) {
+      out = false;
+    }
+  }
+
+  return (out) ? true : false ;  
+}
+
+palindrome("1 eye for of 1 eye.")
+
+
+/* ------------------------------------------------- 
+    Roman Numeral Converter
+*/
+function convertToRoman(num) {
+
+  let str = "";
+
+  while (num >= 0) {
+    if (num >= 1000) {
+      str += "M";
+      num -= 1000;
+      continue;
+    }
+    if (num >= 900) {
+      str += "CM";
+      num -= 900;
+      continue;
+    }
+    if (num >= 500) {
+      str += "D";
+      num -= 500;
+      continue;
+    }
+    if (num >= 400) {
+      str += "CD";
+      num -= 400;
+      continue;
+    }
+    if (num >= 100) {
+      str += "C";
+      num -= 100;
+      continue;
+    }
+    if (num >= 90) {
+      str += "XC";
+      num -= 90;
+      continue;
+    }
+    if (num >= 50) {
+      str += "L";
+      num -= 50;
+      continue;
+    }
+    if (num >= 40) {
+      str += "XL";
+      num -= 40;
+      continue;
+    }
+    if (num >= 10) {
+      str += "X";
+      num -= 10;
+      continue;
+    }
+    if (num >= 9) {
+      str += "IX";
+      num -= 9;
+      continue;
+    }
+    if (num >= 5) {
+      str += "V";
+      num -= 5;
+      continue;
+    }
+    if (num >= 4) {
+      str += "IV";
+      num -= 4;
+      continue;
+    }
+    if (num >= 1) {
+      str += "I";
+      num -= 1;
+      continue;
+    }
+  }
+
+
+  console.log(num);
+  console.log(str);
+  console.log(""); 
+
+ return str;
+}
+
+convertToRoman(649)
+
+
+/* ------------------------------------------------- 
+    Caesars Cipher
+*/
+function rot13(str) {
+  
+  var alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A","B","C","D","E","F","G","H","I","J","K","L","M"];
+  let outstr = "";
+  let reg = /\W/;
+
+  for (let i in str) {
+      if (reg.test(str[i])) {
+           outstr += str[i];
+      } else {
+          outstr += alpha[13+alpha.indexOf(str[i])];
+      }
+  }
+
+  console.log(outstr);
+
+  return outstr;
+}
+
+rot13("SERR CVMMN!")
+
+/* ------------------------------------------------- 
+    Telephone Number Validator
+*/
+function telephoneCheck(str) {
+
+  let reg = /\d/g;
+  let num = str.match(reg);
+
+  console.log(num);
+
+  if (num.length >= 11 && num[0] != "1" || num.length < 10) {
+    console.log(false);
+    return false;
+  }
+
+  if (str.includes(")") && !str.includes("(") || str[(str.length-1)] == ")" || str[0] == "-") {
+    console.log(false);
+    return false;
+  }
+
+  if (num.length >= 12 || str.includes("?") || str.includes("(") && !str.includes(")")) {
+    console.log(false);
+    return false; 
+  }
+
+  console.log(str);
+
+  return true;
+}
+
+telephoneCheck("(555-555-5555")
+
+
+/* ------------------------------------------------- 
     
 */
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
+/* ------------------------------------------------- 
+    
+*/
+
+
+
 
 
