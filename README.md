@@ -1,0 +1,3 @@
+# Algorithms
+
+If im bored
