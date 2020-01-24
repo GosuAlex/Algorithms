@@ -423,9 +423,39 @@ telephoneCheck("(555-555-5555")
 
 
 /* ------------------------------------------------- 
-    
+    Reverse words in a sentence
 */
+function reverseWords(str) {
+  
+  const regexWordCharacter = /\w/;
+  const regexPunctuation = /[,.'?!]/;
+  
+  let revStr = "";
+  let word = "";
+  
+  for (let i = 0 ; i <= str.length-1 ; i++) {
+    console.log(str[i])
+    if(i == str.length-1) {
+      revStr = word + str[i] + " " + revStr;
+    } else if(regexWordCharacter.test(str[i])) {
+      word += str[i];
+    } else if (regexPunctuation.test(str[i])) {
+      word += str[i];
+    } else {
+      revStr = word + str[i] + revStr;
+      //console.log(word)
+      word = "";
+    }
+  }
+  
+  console.log(str);
+  console.log(revStr)
+  // Output : "name? you're What's B. Bobby is name my mister, Hello "
+  
+  return revStr;
+}
 
+reverseWords("Hello mister, my name is Bobby B. What's you're name?");
 
 
 /* ------------------------------------------------- 
