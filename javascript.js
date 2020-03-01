@@ -548,16 +548,99 @@ function bubbleSort(arr) {
 // Output/Mutate array : Array values in ascending order.
 
 /* ------------------------------------------------- 
-    
+    Sorting: Heap sort
 */
+function heapSort(arr) {
+  const sortedArr = [];
 
+  // Sort a maxHeap then puts the root(then the biggest node) into sortedArr, then pop it out of arr and redo the maxHeap sort until arr==0)
+  // Straight up recursion is normally used instead of this while loop written here. 
+  while (arr.length > 0) {
 
+    for (counter = Math.floor(arr.length / 2); counter >= 0; counter--) {
+      let isHeap = false;
+      let maxChild = null;
+      let startIndex = counter;
+
+      while (startIndex * 2 < arr.length - 1 && isHeap == false) {
+
+        // If index/node only has one child
+        if (startIndex * 2 + 1 == arr.length - 1) {
+          maxChild = startIndex * 2 + 1;
+        } else {
+          // Gets the bigger child. Which is bigger ? left : right. 
+          maxChild = arr[startIndex * 2 + 1] > arr[startIndex * 2 + 2] ? maxChild = startIndex * 2 + 1 : maxChild = startIndex * 2 + 2
+        }
+
+        // Is the child bigger then current node/index?  
+        if (arr[startIndex] < arr[maxChild]) {
+          [arr[startIndex], arr[maxChild]] = [arr[maxChild], arr[startIndex]];
+          startIndex = maxChild;
+        } else {
+          isHeap = true;
+        }
+      }
+    }
+
+    [arr[arr.length - 1], arr[0]] = [arr[0], arr[arr.length - 1]];
+    sortedArr.push(arr.pop());
+  }
+
+  return sortedArr;
+}
+
+// Output array : Array values in ascending order.
 
 /* ------------------------------------------------- 
-    
+    Sorting: Quick sort
 */
+const quickSort = (arr, left, right) => {
+  
+  // Sort and get dividing index.
+  function subSort(arr, left, right) {
+    // Pivot get set to the middle item in the array.
+    let pivot = arr[Math.floor((right + left) / 2)];
+    
+    // While the left & right pointers have not passed each other.
+    while(left <= right) {
+      
+      // While left pointer's index has lesser value than pivot value. Step to next index.
+      while(arr[left] < pivot) {
+        left++;
+      }
+      // While right pointer's index has greater value than pivot value. Step to next index.
+      while(arr[right] > pivot) {
+        right--;
+      }
+      
+      // If left & right pointers have passed each other. Swap the values on those indexes, and step both pointers to the next index.
+      if(left <= right) {
+        [arr[left], arr[right]] = [arr[right], arr[left]];
+        left++;
+        right--;
+      }
+    }
+    
+    return left;
+  }
+  
+  // Get a index to divide the array at, and performe quick sort on those children and so on...
+  let dividerIndex = subSort(arr, left, right);
+  
+  // more items on the left side of the dividerIndex
+  if(left < dividerIndex - 1) {
+    quickSort(arr, left, dividerIndex - 1);
+  }
+  // more items on the left side of the dividerIndex
+  if(dividerIndex < right) {
+    quickSort(arr, dividerIndex, right);
+  }
 
+  return arr;
+}
 
+// quickSort(arr, 0, arr.length - 1);
+// Output array : Array values in ascending order.
 
 /* ------------------------------------------------- 
     
