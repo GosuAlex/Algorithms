@@ -643,22 +643,89 @@ const quickSort = (arr, left, right) => {
 // Output array : Array values in ascending order.
 
 /* ------------------------------------------------- 
-    
+    Autocompletion
 */
 
+const wordsThatStartsWithInput = (words, input) => {
+  return words.filter((item) => {
+    return item.substr(0,input.length) === input;
+  });
+}
 
+const wordsThatIncludesInput = (words, input) => {
+  return words.filter((item) => {
+    return item.includes(input);
+  });
+}
+
+// const words = ["dog", "doogo", "ost", "city", "mine", "toggeldogel", "hotdog"];
+// const input = "do";
+// console.log(wordsThatStartsWithInput(words, input));
+// console.log(wordsThatIncludesInput(words, input));
+
+// Output array : ["dog", "doogo"]
+// Output array : ["dog", "doogo", "toggeldogel", "hotdog"]
 
 /* ------------------------------------------------- 
-    
+    K-th Largest Number
 */
 
+const thLargestNumber = (numbers, input) => {
+  if(input > numbers.length || input <= 0)
+    return "K-th is out of bound"
+  
+  let findThis;
+  const arr = Array.from({ length: input }, (element, index) => 0);
 
+  numbers.forEach((item) => {
+
+    let leastIndex = arr.indexOf(Math.min(...arr));
+    
+    if (item > arr[leastIndex]) {
+      arr[leastIndex] = item;
+      findThis = Math.min(...arr);
+    }
+
+    if (item === Math.min(...arr)) {
+      findThis = item;
+    }
+    
+  });
+
+  return findThis;
+}
+
+// const input = 5;
+// const numbers = [2,15,6,12,7,9,8,3,4,5,1];
+// console.log(thLargestNumber(numbers, input));
+// Output array : 7
 
 /* ------------------------------------------------- 
-    
+    Word Concatenation
 */
 
+// bad, also uses includes.
 
+const WordConcat = (wordsArray) => {
+  for (let i = 0 ; i < arr.length ; i++) {
+    arr.forEach((item) => {
+      if (arr.includes(arr[i] + item)) {
+        console.log(item + " : " + arr[i] + item);
+      }
+      if (arr.includes(item + arr[i])) {
+        console.log(item + " : " + item + arr[i]);
+      }
+    })
+  }
+}
+
+// const arr = ["cat", "cats", "boo", "boomer", "dog", "catsdog", "mer"];
+// WordConcat(arr);
+// Output:
+// "dog : catsdog"
+// "mer : boomer"
+// "cats : catsdog"
+// "boo : boomer"
 
 /* ------------------------------------------------- 
     
